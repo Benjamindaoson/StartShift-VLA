@@ -30,6 +30,18 @@ def _cmd_splits(args):
     print(json.dumps({k: len(v) for k, v in splits.items()}, indent=2))
 
 
+def _cmd_make_targeted(args):
+    from startshift.data.splits import save_failure_targeted_splits
+
+    summary = save_failure_targeted_splits(
+        args.pool,
+        args.records,
+        args.output_dir,
+        budgets=args.budgets,
+    )
+    print(json.dumps(summary, indent=2))
+
+
 def _cmd_train(args):
     from startshift.training.train import train_rise
 
@@ -201,6 +213,16 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--adapt-pool-fraction", type=float, default=0.30)
     p.add_argument("--adapt-budgets", type=int, nargs="+", default=[10, 25, 50, 100])
     p.set_defaults(func=_cmd_splits)
+
+    p = sub.add_parser(
+        "make-targeted",
+        help="Select failure-targeted adaptation groups using base-policy scores from the adaptation pool only",
+    )
+    p.add_argument("--pool", default="splits/adapt_pool.json")
+    p.add_argument("--records", required=True)
+    p.add_argument("--output-dir", default="splits")
+    p.add_argument("--budgets", type=int, nargs="+", default=[10, 25, 50, 100])
+    p.set_defaults(func=_cmd_make_targeted)
 
     p = sub.add_parser("train", help="Train RISE-E, RISE-EA or RISE-EAR")
     p.add_argument("--config", required=True)
