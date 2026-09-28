@@ -2,8 +2,9 @@ from __future__ import annotations
 
 import json
 import os
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 from startshift.constants import ROBOTINIT_CATEGORY_ALIASES
 from startshift.types import PoseRecord
