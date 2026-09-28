@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
 
 
 def _cmd_manifest(args):
@@ -19,7 +18,14 @@ def _cmd_splits(args):
     from startshift.data.splits import build_pose_splits, save_pose_splits
 
     records = load_pose_records(args.classification, category="robot")
-    splits = build_pose_splits(records, seed=args.seed)
+    splits = build_pose_splits(
+        records,
+        seed=args.seed,
+        audit_fraction=args.audit_fraction,
+        dev_fraction=args.dev_fraction,
+        adapt_pool_fraction=args.adapt_pool_fraction,
+        adapt_budgets=tuple(args.adapt_budgets),
+    )
     save_pose_splits(splits, args.output_dir)
     print(json.dumps({k: len(v) for k, v in splits.items()}, indent=2))
 
@@ -52,6 +58,7 @@ def _cmd_baseline(args):
         batch_size=args.batch_size or cfg.train.batch_size,
         lr=args.lr or cfg.train.lr,
         limit_per_task=args.limit_per_task,
+        seed=args.seed if args.seed is not None else cfg.train.seed,
         execute=args.execute,
     )
     if not args.execute:
@@ -69,6 +76,7 @@ def _cmd_eval(args):
         seed=args.seed,
         device=args.device,
         method_name=args.method_name,
+        hard_reset=not args.soft_reset,
         init_states=not args.canonical_reset,
         record_trajectories=args.record_trajectories,
         metadata={
@@ -76,6 +84,7 @@ def _cmd_eval(args):
             "trainable_parameters": args.trainable_parameters,
             "gpu_hours": args.gpu_hours,
             "canonical_reset": args.canonical_reset,
+            "soft_reset": args.soft_reset,
         },
     )
 
@@ -143,6 +152,24 @@ def _cmd_state_coverage(args):
     write_pose_distance_csv(dataset, args.output, reference_task=args.reference_task)
 
 
+def _cmd_gate(args):
+    from startshift.gates import run_gate
+
+    result = run_gate(
+        mode=args.mode,
+        output=args.output,
+        id_summary=args.id_summary,
+        robotinit_summary=args.robotinit_summary,
+        baseline_heldout=args.baseline_heldout,
+        method_heldout=args.method_heldout,
+        baseline_id=args.baseline_id,
+        method_id=args.method_id,
+    )
+    print(json.dumps(result.to_dict(), indent=2))
+    if args.fail_on_reject and not result.passed:
+        raise SystemExit(2)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="startshift", description="StartShift-VLA experiment CLI")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -157,6 +184,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--classification")
     p.add_argument("--output-dir", default="splits")
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--audit-fraction", type=float, default=0.20)
+    p.add_argument("--dev-fraction", type=float, default=0.20)
+    p.add_argument("--adapt-pool-fraction", type=float, default=0.30)
+    p.add_argument("--adapt-budgets", type=int, nargs="+", default=[10, 25, 50, 100])
     p.set_defaults(func=_cmd_splits)
 
     p = sub.add_parser("train", help="Train RISE-E, RISE-EA or RISE-EAR")
@@ -177,6 +208,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--batch-size", type=int)
     p.add_argument("--lr", type=float)
     p.add_argument("--limit-per-task", type=int)
+    p.add_argument("--seed", type=int)
     p.add_argument("--execute", action="store_true")
     p.set_defaults(func=_cmd_baseline)
 
@@ -192,6 +224,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--trainable-parameters", type=int, default=0)
     p.add_argument("--gpu-hours", type=float)
     p.add_argument("--canonical-reset", action="store_true")
+    p.add_argument("--soft-reset", action="store_true")
     p.add_argument("--record-trajectories", action="store_true")
     p.set_defaults(func=_cmd_eval)
 
@@ -206,7 +239,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--method-name")
     p.set_defaults(func=_cmd_eval_id)
 
-    p = sub.add_parser("external-eval", help="Use official lerobot-eval for LoRA or another backbone")
+    p = sub.add_parser("external-eval", help="Use official lerobot-eval for another policy/backbone")
     p.add_argument("--policy", required=True)
     p.add_argument("--split", required=True)
     p.add_argument("--output-dir", required=True)
@@ -231,6 +264,18 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--id")
     p.add_argument("--output", required=True)
     p.set_defaults(func=_cmd_audit)
+
+    p = sub.add_parser("gate", help="Evaluate phenomenon or method success gates")
+    p.add_argument("--mode", choices=["phenomenon", "method"], required=True)
+    p.add_argument("--output", required=True)
+    p.add_argument("--id-summary")
+    p.add_argument("--robotinit-summary")
+    p.add_argument("--baseline-heldout")
+    p.add_argument("--method-heldout")
+    p.add_argument("--baseline-id")
+    p.add_argument("--method-id")
+    p.add_argument("--fail-on-reject", action="store_true")
+    p.set_defaults(func=_cmd_gate)
 
     p = sub.add_parser("report", help="Build plots and Markdown report from experiment results")
     p.add_argument("--results-root", required=True)
