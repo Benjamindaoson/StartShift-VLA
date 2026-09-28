@@ -10,6 +10,7 @@ STARTSHIFT_INITIAL_STATE = "startshift.initial_state"
 STARTSHIFT_RELATIVE_STATE = "startshift.relative_state"
 STARTSHIFT_POSE_ID = "startshift.pose_id"
 STARTSHIFT_DIFFICULTY = "startshift.difficulty"
+STARTSHIFT_GROUP_INDEX = "startshift.group_index"
 
 ROBOTINIT_CATEGORY_ALIASES = {
     "robot",

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import random
+import re
 from collections import defaultdict
 from pathlib import Path
 from typing import Iterable
@@ -26,10 +27,18 @@ def _round_robin_stratified(records: list[PoseRecord], seed: int) -> list[PoseRe
     return ordered
 
 
+def _difficulty_rank(value) -> float:
+    if value is None:
+        return 0.0
+    if isinstance(value, (int, float)):
+        return float(value)
+    match = re.search(r"(\d+(?:\.\d+)?)", str(value))
+    return float(match.group(1)) if match else 0.0
+
+
 def validate_disjoint_splits(splits: dict[str, list[PoseRecord]]) -> None:
     seen: dict[str, str] = {}
     for split_name, records in splits.items():
-        # Nested adaptation budgets intentionally overlap each other.
         if split_name.startswith("adapt_"):
             continue
         for record in records:
@@ -48,12 +57,7 @@ def build_pose_splits(
     adapt_pool_fraction: float = 0.3,
     adapt_budgets: tuple[int, ...] = DEFAULT_ADAPT_BUDGETS,
 ) -> dict[str, list[PoseRecord]]:
-    """Create deterministic, group-disjoint RobotInit splits.
-
-    Adaptation budgets are nested subsets of the adaptation pool.  Dev and test
-    contain pose groups never used for adaptation.
-    """
-
+    """Create deterministic RobotInit splits with nested random and targeted budgets."""
     values = list(records)
     if len(values) < 5:
         raise ValueError("Need at least five RobotInit records to create meaningful splits.")
@@ -81,8 +85,16 @@ def build_pose_splits(
         "dev": dev,
         "heldout_test": heldout,
     }
+    targeted = sorted(
+        adapt_pool,
+        key=lambda r: (_difficulty_rank(r.difficulty), r.suite, r.task_id),
+        reverse=True,
+    )
     for budget in sorted(set(int(x) for x in adapt_budgets)):
-        result[f"adapt_{budget}"] = adapt_pool[: min(budget, len(adapt_pool))]
+        k = min(budget, len(adapt_pool))
+        result[f"adapt_{budget}"] = adapt_pool[:k]
+        result[f"adapt_random_{budget}"] = adapt_pool[:k]
+        result[f"adapt_targeted_{budget}"] = targeted[:k]
 
     validate_disjoint_splits(
         {k: v for k, v in result.items() if k in {"audit", "adapt_pool", "dev", "heldout_test"}}
