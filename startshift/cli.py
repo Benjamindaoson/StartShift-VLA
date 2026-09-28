@@ -97,6 +97,8 @@ def _cmd_eval(args):
             "gpu_hours": args.gpu_hours,
             "benchmark_init_states_disabled": args.disable_benchmark_init_states,
             "soft_reset": args.soft_reset,
+            "seed": args.seed,
+            "split": "heldout" if "heldout" in str(args.split) else str(args.split),
         },
     )
 
