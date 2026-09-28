@@ -3,8 +3,8 @@ from __future__ import annotations
 import random
 import re
 from collections import defaultdict
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Iterable
 
 from startshift.constants import DEFAULT_ADAPT_BUDGETS, DEFAULT_SEED
 from startshift.types import PoseRecord
