@@ -6,13 +6,14 @@ import subprocess
 from pathlib import Path
 
 from startshift.data.splits import load_pose_split
-from startshift.training.dataset import episodes_for_task_ids
 
 
 def resolve_episode_subset(
     *, dataset_repo: str, split_path: str | Path, limit_per_task: int | None = None
 ) -> list[int]:
     from lerobot.datasets import LeRobotDatasetMetadata
+
+    from startshift.training.dataset import episodes_for_task_ids
 
     records = load_pose_split(split_path)
     meta = LeRobotDatasetMetadata(dataset_repo)
