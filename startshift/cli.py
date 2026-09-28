@@ -77,13 +77,13 @@ def _cmd_eval(args):
         device=args.device,
         method_name=args.method_name,
         hard_reset=not args.soft_reset,
-        init_states=not args.canonical_reset,
+        init_states=not args.disable_benchmark_init_states,
         record_trajectories=args.record_trajectories,
         metadata={
             "adaptation_budget": args.adaptation_budget,
             "trainable_parameters": args.trainable_parameters,
             "gpu_hours": args.gpu_hours,
-            "canonical_reset": args.canonical_reset,
+            "benchmark_init_states_disabled": args.disable_benchmark_init_states,
             "soft_reset": args.soft_reset,
         },
     )
@@ -120,6 +120,18 @@ def _cmd_audit(args):
     from startshift.evaluation.audit import audit
 
     audit(args.robotinit, output_path=args.output, id_records=args.id)
+
+
+def _cmd_aggregate(args):
+    from startshift.analysis.aggregate import write_aggregate
+
+    paths = write_aggregate(
+        args.results_root,
+        args.output_dir,
+        baseline_method=args.baseline_method,
+        method=args.method,
+    )
+    print(json.dumps({key: str(value) for key, value in paths.items()}, indent=2))
 
 
 def _cmd_report(args):
@@ -223,7 +235,11 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--adaptation-budget", type=int, default=0)
     p.add_argument("--trainable-parameters", type=int, default=0)
     p.add_argument("--gpu-hours", type=float)
-    p.add_argument("--canonical-reset", action="store_true")
+    p.add_argument(
+        "--disable-benchmark-init-states",
+        action="store_true",
+        help="Disable LIBERO-Plus benchmark init states. This is NOT a physical reset-controller baseline.",
+    )
     p.add_argument("--soft-reset", action="store_true")
     p.add_argument("--record-trajectories", action="store_true")
     p.set_defaults(func=_cmd_eval)
@@ -276,6 +292,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--method-id")
     p.add_argument("--fail-on-reject", action="store_true")
     p.set_defaults(func=_cmd_gate)
+
+    p = sub.add_parser("aggregate", help="Aggregate multi-seed results and optional matched comparisons")
+    p.add_argument("--results-root", required=True)
+    p.add_argument("--output-dir", required=True)
+    p.add_argument("--baseline-method")
+    p.add_argument("--method")
+    p.set_defaults(func=_cmd_aggregate)
 
     p = sub.add_parser("report", help="Build plots and Markdown report from experiment results")
     p.add_argument("--results-root", required=True)
