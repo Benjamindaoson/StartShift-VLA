@@ -6,7 +6,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 CORE_METRICS = [
     "success_rate",
     "worst_pose_success",
