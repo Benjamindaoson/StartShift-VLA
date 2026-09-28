@@ -1,0 +1,28 @@
+seeds: [42, 43, 44]
+adaptation_budgets: [10, 25, 50, 100]
+methods:
+  - base
+  - standard-ft
+  - lora
+  - random-augmentation
+  - targeted-augmentation
+  - rise-e
+  - rise-ea
+  - rise-ear
+primary_test_split: heldout_test
+primary_metrics:
+  - success_rate
+  - worst_pose_success
+  - cvar20_pose_success
+  - pose_success_std
+  - robustness_retention
+cost_metrics:
+  - adaptation_samples
+  - trainable_parameters
+  - gpu_hours
+  - peak_vram
+gates:
+  min_id_robotinit_gap_pp: 15
+  min_gain_over_strongest_matched_baseline_pp: 3
+  target_gain_over_strongest_matched_baseline_pp: 5
+  max_id_regression_pp: 2

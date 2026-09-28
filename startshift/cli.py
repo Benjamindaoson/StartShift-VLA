@@ -1,0 +1,220 @@
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+
+
+def _cmd_manifest(args):
+    from startshift.data.classification import load_pose_records
+    from startshift.utils.io import write_json
+
+    records = load_pose_records(args.classification, category=args.category)
+    write_json([record.to_dict() for record in records], args.output)
+    print(f"Wrote {len(records)} normalized records to {args.output}")
+
+
+def _cmd_splits(args):
+    from startshift.data.classification import load_pose_records
+    from startshift.data.splits import build_pose_splits, save_pose_splits
+
+    records = load_pose_records(args.classification, category="robot")
+    splits = build_pose_splits(records, seed=args.seed)
+    save_pose_splits(splits, args.output_dir)
+    print(json.dumps({k: len(v) for k, v in splits.items()}, indent=2))
+
+
+def _cmd_train(args):
+    from startshift.training.train import train_rise
+
+    train_rise(args.config, split=args.split, method=args.method, limit_per_task=args.limit_per_task)
+
+
+def _cmd_baseline(args):
+    from startshift.config import load_config
+    from startshift.training.baselines import run_baseline, shell_command
+
+    cfg = load_config(args.config)
+    command = run_baseline(
+        method=args.method,
+        base_policy=cfg.policy.base_policy,
+        dataset_repo=cfg.data.dataset_repo,
+        split_path=args.split,
+        output_dir=args.output_dir,
+        steps=args.steps or cfg.train.steps,
+        batch_size=args.batch_size or cfg.train.batch_size,
+        lr=args.lr or cfg.train.lr,
+        limit_per_task=args.limit_per_task,
+        execute=args.execute,
+    )
+    if not args.execute:
+        print(shell_command(command))
+
+
+def _cmd_eval(args):
+    from startshift.evaluation.runner import evaluate_split
+
+    evaluate_split(
+        policy_path=args.policy,
+        split_path=args.split,
+        output_dir=args.output_dir,
+        episodes_per_task=args.episodes,
+        seed=args.seed,
+        device=args.device,
+        method_name=args.method_name,
+        metadata={
+            "adaptation_budget": args.adaptation_budget,
+            "trainable_parameters": args.trainable_parameters,
+            "gpu_hours": args.gpu_hours,
+        },
+    )
+
+
+def _cmd_eval_id(args):
+    from startshift.evaluation.runner import evaluate_id_suites
+
+    evaluate_id_suites(
+        policy_path=args.policy,
+        suites=args.suites.split(","),
+        output_dir=args.output_dir,
+        tasks_per_suite=args.tasks_per_suite,
+        episodes_per_task=args.episodes,
+        seed=args.seed,
+        device=args.device,
+        method_name=args.method_name,
+    )
+
+
+def _cmd_failure_template(args):
+    from startshift.evaluation.failures import write_annotation_template
+
+    write_annotation_template(args.records, args.output)
+
+
+def _cmd_apply_failures(args):
+    from startshift.evaluation.failures import apply_annotations
+
+    apply_annotations(args.records, args.annotations, args.output)
+
+
+def _cmd_audit(args):
+    from startshift.evaluation.audit import audit
+
+    audit(args.robotinit, output_path=args.output, id_records=args.id)
+
+
+def _cmd_report(args):
+    from startshift.analysis.report import build_report
+
+    path = build_report(args.results_root, args.output_dir)
+    print(path)
+
+
+def _cmd_state_coverage(args):
+    from lerobot.datasets import LeRobotDataset
+
+    from startshift.diagnostics.state_coverage import write_pose_distance_csv
+
+    dataset = LeRobotDataset(args.dataset_repo, download_videos=False)
+    write_pose_distance_csv(dataset, args.output, reference_task=args.reference_task)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="startshift", description="StartShift-VLA experiment CLI")
+    sub = parser.add_subparsers(dest="command", required=True)
+
+    p = sub.add_parser("manifest", help="Normalize LIBERO-Plus task classification metadata")
+    p.add_argument("--classification")
+    p.add_argument("--category", default="robot")
+    p.add_argument("--output", default="splits/robotinit_manifest.json")
+    p.set_defaults(func=_cmd_manifest)
+
+    p = sub.add_parser("make-splits", help="Build leak-free RobotInit audit/adapt/dev/test splits")
+    p.add_argument("--classification")
+    p.add_argument("--output-dir", default="splits")
+    p.add_argument("--seed", type=int, default=42)
+    p.set_defaults(func=_cmd_splits)
+
+    p = sub.add_parser("train", help="Train RISE-E, RISE-EA or RISE-EAR")
+    p.add_argument("--config", required=True)
+    p.add_argument("--split", required=True)
+    p.add_argument("--method", choices=["rise-e", "rise-ea", "rise-ear"])
+    p.add_argument("--limit-per-task", type=int)
+    p.set_defaults(func=_cmd_train)
+
+    p = sub.add_parser("baseline", help="Run or print an official LeRobot baseline command")
+    p.add_argument("--config", required=True)
+    p.add_argument("--split", required=True)
+    p.add_argument("--method", choices=["standard-ft", "expert-ft", "lora"], required=True)
+    p.add_argument("--output-dir", required=True)
+    p.add_argument("--steps", type=int)
+    p.add_argument("--batch-size", type=int)
+    p.add_argument("--lr", type=float)
+    p.add_argument("--limit-per-task", type=int)
+    p.add_argument("--execute", action="store_true")
+    p.set_defaults(func=_cmd_baseline)
+
+    p = sub.add_parser("eval", help="Evaluate a base/RISE policy on a RobotInit split")
+    p.add_argument("--policy", required=True)
+    p.add_argument("--split", required=True)
+    p.add_argument("--output-dir", required=True)
+    p.add_argument("--episodes", type=int, default=10)
+    p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--device", default="cuda")
+    p.add_argument("--method-name")
+    p.add_argument("--adaptation-budget", type=int, default=0)
+    p.add_argument("--trainable-parameters", type=int, default=0)
+    p.add_argument("--gpu-hours", type=float)
+    p.set_defaults(func=_cmd_eval)
+
+    p = sub.add_parser("eval-id", help="Evaluate the same policy on vanilla LIBERO")
+    p.add_argument("--policy", required=True)
+    p.add_argument("--suites", default="libero_spatial,libero_object,libero_goal,libero_10")
+    p.add_argument("--tasks-per-suite", type=int, default=10)
+    p.add_argument("--episodes", type=int, default=10)
+    p.add_argument("--output-dir", required=True)
+    p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--device", default="cuda")
+    p.add_argument("--method-name")
+    p.set_defaults(func=_cmd_eval_id)
+
+    p = sub.add_parser("failure-template", help="Create a manual failure annotation CSV")
+    p.add_argument("--records", required=True)
+    p.add_argument("--output", required=True)
+    p.set_defaults(func=_cmd_failure_template)
+
+    p = sub.add_parser("apply-failures", help="Merge manual failure labels back into eval records")
+    p.add_argument("--records", required=True)
+    p.add_argument("--annotations", required=True)
+    p.add_argument("--output")
+    p.set_defaults(func=_cmd_apply_failures)
+
+    p = sub.add_parser("audit", help="Aggregate ID/RobotInit/tail/failure metrics")
+    p.add_argument("--robotinit", required=True)
+    p.add_argument("--id")
+    p.add_argument("--output", required=True)
+    p.set_defaults(func=_cmd_audit)
+
+    p = sub.add_parser("report", help="Build plots and Markdown report from experiment results")
+    p.add_argument("--results-root", required=True)
+    p.add_argument("--output-dir", required=True)
+    p.set_defaults(func=_cmd_report)
+
+    p = sub.add_parser("state-coverage", help="Extract first-frame proprioception and pose distances")
+    p.add_argument("--dataset-repo", default="lerobot/libero_plus")
+    p.add_argument("--output", default="results/pose_distances.csv")
+    p.add_argument("--reference-task", type=int)
+    p.set_defaults(func=_cmd_state_coverage)
+
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    args.func(args)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

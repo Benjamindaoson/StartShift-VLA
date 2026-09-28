@@ -51,10 +51,10 @@ def evaluate_records(
     device: str = "cuda",
     method_name: str | None = None,
     hard_reset: bool = True,
+    env_type: str = "libero_plus",
+    metadata: dict | None = None,
 ) -> Path:
-    """Evaluate exact LIBERO-Plus RobotInit task IDs and save per-rollout records."""
-
-    from lerobot.envs.configs import LiberoPlusEnv
+    from lerobot.envs.configs import LiberoEnv, LiberoPlusEnv
     from lerobot.policies import make_pre_post_processors
     from lerobot.scripts.lerobot_eval import rollout
 
@@ -74,8 +74,9 @@ def evaluate_records(
     output.mkdir(parents=True, exist_ok=True)
     all_rows: list[EvalRecord] = []
 
+    env_cls = LiberoPlusEnv if env_type == "libero_plus" else LiberoEnv
     for record_index, record in enumerate(records):
-        env_cfg = LiberoPlusEnv(
+        env_cfg = env_cls(
             task=record.suite,
             task_ids=[record.task_id],
             hard_reset=hard_reset,
@@ -116,7 +117,7 @@ def evaluate_records(
                     reward=float(rewards[episode]),
                     failure_type=None if success else "UNLABELED",
                     seed=seed + record_index * 10_000 + episode,
-                    metadata={"classification": record.to_dict()},
+                    metadata={"classification": record.to_dict(), "env_type": env_type},
                 )
             )
 
@@ -125,6 +126,8 @@ def evaluate_records(
     summary = summarize_records(all_rows)
     summary["method"] = method_name or inferred_method
     summary["policy_path"] = policy_path
+    summary["env_type"] = env_type
+    summary["metadata"] = metadata or {}
     summary["environment"] = collect_environment()
     write_json(summary, output / "summary.json")
     return records_path
@@ -140,6 +143,7 @@ def evaluate_split(
     device: str = "cuda",
     method_name: str | None = None,
     hard_reset: bool = True,
+    metadata: dict | None = None,
 ) -> Path:
     return evaluate_records(
         policy_path=policy_path,
@@ -150,4 +154,34 @@ def evaluate_split(
         device=device,
         method_name=method_name,
         hard_reset=hard_reset,
+        env_type="libero_plus",
+        metadata=metadata,
+    )
+
+
+def evaluate_id_suites(
+    *,
+    policy_path: str,
+    suites: list[str],
+    output_dir: str | Path,
+    tasks_per_suite: int = 10,
+    episodes_per_task: int = 10,
+    seed: int = 42,
+    device: str = "cuda",
+    method_name: str | None = None,
+) -> Path:
+    records: list[PoseRecord] = []
+    for suite in suites:
+        for task_id in range(tasks_per_suite):
+            records.append(PoseRecord(suite=suite, task_id=task_id, category="id", pose_id=f"{suite}:{task_id}"))
+    return evaluate_records(
+        policy_path=policy_path,
+        records=records,
+        output_dir=output_dir,
+        episodes_per_task=episodes_per_task,
+        seed=seed,
+        device=device,
+        method_name=method_name,
+        env_type="libero",
+        metadata={"split": "id"},
     )

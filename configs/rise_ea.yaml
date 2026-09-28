@@ -1,0 +1,37 @@
+name: rise_ea
+
+data:
+  dataset_repo: lerobot/libero_plus
+  split_dir: splits
+  category: robot
+  seed: 42
+  adapt_budgets: [10, 25, 50, 100]
+
+policy:
+  base_policy: lerobot/smolvla_libero
+  method: rise-ea
+  state_dim: 8
+  bottleneck_dim: 128
+  adapter_scale: 1.0
+  freeze_base_state_proj: true
+
+train:
+  output_dir: outputs/train/rise_ea
+  steps: 10000
+  batch_size: 8
+  num_workers: 4
+  lr: 0.0001
+  weight_decay: 1.0e-10
+  grad_clip_norm: 10.0
+  log_every: 20
+  save_every: 2000
+  seed: 42
+  device: cuda
+  bf16: true
+
+eval:
+  output_dir: outputs/eval/rise_ea
+  episodes_per_task: 10
+  batch_size: 1
+  seed: 42
+  hard_reset: true
