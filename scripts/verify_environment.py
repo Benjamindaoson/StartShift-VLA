@@ -40,6 +40,12 @@ def _require_import(name: str):
 
 
 def main() -> int:
+    if sys.version_info < (3, 12):  # noqa: UP036 - direct-script guard for stale system Python
+        raise RuntimeError(
+            f"StartShift robotics runtime requires Python >=3.12; got {sys.version.split()[0]}. "
+            "Run bash scripts/bootstrap.sh, then source scripts/env.sh."
+        )
+
     lock = _read_lock()
     checks: dict[str, object] = {
         "python": sys.version,

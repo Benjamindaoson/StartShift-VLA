@@ -7,7 +7,7 @@ name = "startshift-vla"
 version = "0.1.0"
 description = "Diagnosing and mitigating hidden reset-state dependence in vision-language-action policies."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 license = {text = "MIT"}
 authors = [{name = "Benjamin Daoson"}]
 dependencies = [
@@ -43,7 +43,7 @@ addopts = "-q"
 
 [tool.ruff]
 line-length = 110
-target-version = "py311"
+target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
