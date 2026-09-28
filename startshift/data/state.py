@@ -12,7 +12,7 @@ class MeanStdStats:
     std: np.ndarray
 
     @classmethod
-    def from_mapping(cls, value: dict[str, Any]) -> "MeanStdStats":
+    def from_mapping(cls, value: dict[str, Any]) -> MeanStdStats:
         mean = np.asarray(value["mean"], dtype=np.float32)
         std = np.asarray(value["std"], dtype=np.float32)
         std = np.where(np.abs(std) < 1e-8, 1.0, std)

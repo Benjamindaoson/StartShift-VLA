@@ -56,6 +56,13 @@ def evaluate_records(
     metadata: dict | None = None,
     record_trajectories: bool = False,
 ) -> Path:
+    """Evaluate records while preserving the perturbation-task as the pose unit.
+
+    LIBERO-Plus task IDs encode perturbation variants. Multiple rollout episodes
+    for a task are repeated trials of the same perturbation, not independent
+    poses. Keeping one pose_id per task is required for meaningful worst-pose
+    and CVaR metrics.
+    """
     from lerobot.envs.configs import LiberoEnv, LiberoPlusEnv
     from lerobot.policies import make_pre_post_processors
     from lerobot.scripts.lerobot_eval import rollout
@@ -118,7 +125,7 @@ def evaluate_records(
                     task_id=record.task_id,
                     episode=episode,
                     success=bool(success),
-                    pose_id=f"{record.group_id}:init{episode}",
+                    pose_id=record.group_id,
                     difficulty=record.difficulty,
                     steps=steps[episode],
                     reward=float(rewards[episode]),
@@ -128,6 +135,7 @@ def evaluate_records(
                         "classification": record.to_dict(),
                         "env_type": env_type,
                         "init_states": init_states,
+                        "hard_reset": hard_reset,
                         "recording_dir": str(recording_dir) if recording_dir else None,
                     },
                 )
@@ -140,6 +148,7 @@ def evaluate_records(
     summary["policy_path"] = policy_path
     summary["env_type"] = env_type
     summary["init_states"] = init_states
+    summary["hard_reset"] = hard_reset
     summary["metadata"] = metadata or {}
     summary["environment"] = collect_environment()
     write_json(summary, output / "summary.json")
@@ -190,7 +199,14 @@ def evaluate_id_suites(
     records: list[PoseRecord] = []
     for suite in suites:
         for task_id in range(tasks_per_suite):
-            records.append(PoseRecord(suite=suite, task_id=task_id, category="id", pose_id=f"{suite}:{task_id}"))
+            records.append(
+                PoseRecord(
+                    suite=suite,
+                    task_id=task_id,
+                    category="id",
+                    pose_id=f"{suite}:{task_id}",
+                )
+            )
     return evaluate_records(
         policy_path=policy_path,
         records=records,

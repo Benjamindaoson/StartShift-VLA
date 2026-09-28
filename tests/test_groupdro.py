@@ -1,7 +1,7 @@
 import pytest
 
 torch=pytest.importorskip("torch")
-from startshift.training.robust import GroupDRO
+from startshift.training.robust import GroupDRO  # noqa: E402
 
 
 def test_groupdro_upweights_hard_group():

@@ -1,0 +1,23 @@
+heldout_split: splits/heldout_test.json
+episodes: 10
+device: cuda
+output_root: outputs/eval/matrix
+
+# Replace policy paths after training. The runner never guesses checkpoint
+# layouts; this keeps baseline and RISE evaluations explicit and auditable.
+runs:
+  - name: targeted-lora
+    policy: outputs/matrix/seed_42/budget_25/lora_targeted/checkpoints/last/pretrained_model
+    seed: 42
+    adaptation_budget: 25
+    trainable_parameters: 0
+    gpu_hours: null
+    record_trajectories: false
+
+  - name: rise-ea
+    policy: outputs/matrix/seed_42/budget_25/rise-ea/last
+    seed: 42
+    adaptation_budget: 25
+    trainable_parameters: 0
+    gpu_hours: null
+    record_trajectories: true

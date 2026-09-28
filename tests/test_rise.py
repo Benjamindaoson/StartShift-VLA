@@ -1,9 +1,9 @@
 import pytest
 
 torch=pytest.importorskip("torch")
-from torch import nn
+from torch import nn  # noqa: E402
 
-from startshift.models.rise import RISEProjectorConfig, RISEStateProjector
+from startshift.models.rise import RISEProjectorConfig, RISEStateProjector  # noqa: E402
 
 
 def test_rise_linear_is_zero_init_equivalent_to_masked_base():
