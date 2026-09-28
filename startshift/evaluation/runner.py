@@ -51,8 +51,10 @@ def evaluate_records(
     device: str = "cuda",
     method_name: str | None = None,
     hard_reset: bool = True,
+    init_states: bool = True,
     env_type: str = "libero_plus",
     metadata: dict | None = None,
+    record_trajectories: bool = False,
 ) -> Path:
     from lerobot.envs.configs import LiberoEnv, LiberoPlusEnv
     from lerobot.policies import make_pre_post_processors
@@ -73,19 +75,22 @@ def evaluate_records(
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
     all_rows: list[EvalRecord] = []
-
     env_cls = LiberoPlusEnv if env_type == "libero_plus" else LiberoEnv
+
     for record_index, record in enumerate(records):
         env_cfg = env_cls(
             task=record.suite,
             task_ids=[record.task_id],
             hard_reset=hard_reset,
-            init_states=True,
+            init_states=init_states,
             max_parallel_tasks=1,
         )
         env_preprocessor, env_postprocessor = env_cfg.get_env_processors()
         env_map = env_cfg.create_envs(n_envs=episodes_per_task, use_async_envs=False)
         env = env_map[record.suite][record.task_id]
+        recording_dir = None
+        if record_trajectories:
+            recording_dir = output / "recordings" / record.suite / f"task_{record.task_id:05d}"
         try:
             rollout_data = rollout(
                 env,
@@ -96,6 +101,8 @@ def evaluate_records(
                 postprocessor,
                 seeds=[seed + record_index * 10_000 + i for i in range(episodes_per_task)],
                 return_observations=False,
+                recording_dir=recording_dir,
+                env_features=env_cfg.features if recording_dir is not None else None,
             )
         finally:
             env.close()
@@ -117,7 +124,12 @@ def evaluate_records(
                     reward=float(rewards[episode]),
                     failure_type=None if success else "UNLABELED",
                     seed=seed + record_index * 10_000 + episode,
-                    metadata={"classification": record.to_dict(), "env_type": env_type},
+                    metadata={
+                        "classification": record.to_dict(),
+                        "env_type": env_type,
+                        "init_states": init_states,
+                        "recording_dir": str(recording_dir) if recording_dir else None,
+                    },
                 )
             )
 
@@ -127,6 +139,7 @@ def evaluate_records(
     summary["method"] = method_name or inferred_method
     summary["policy_path"] = policy_path
     summary["env_type"] = env_type
+    summary["init_states"] = init_states
     summary["metadata"] = metadata or {}
     summary["environment"] = collect_environment()
     write_json(summary, output / "summary.json")
@@ -143,7 +156,9 @@ def evaluate_split(
     device: str = "cuda",
     method_name: str | None = None,
     hard_reset: bool = True,
+    init_states: bool = True,
     metadata: dict | None = None,
+    record_trajectories: bool = False,
 ) -> Path:
     return evaluate_records(
         policy_path=policy_path,
@@ -154,8 +169,10 @@ def evaluate_split(
         device=device,
         method_name=method_name,
         hard_reset=hard_reset,
+        init_states=init_states,
         env_type="libero_plus",
         metadata=metadata,
+        record_trajectories=record_trajectories,
     )
 
 
