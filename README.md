@@ -215,10 +215,18 @@ Core splits are disjoint at the perturbation-group level:
 - `dev.json`
 - `heldout_test.json`
 
-Nested adaptation files include:
+Nested adaptation files created immediately by `make-splits` include:
 
 - `adapt_random_10/25/50/100.json`
-- `adapt_targeted_10/25/50/100.json`
+- `adapt_difficulty_10/25/50/100.json` — hard-first according to LIBERO-Plus official difficulty
+
+A **genuine failure-targeted** split is created only after evaluating the base policy on the adaptation pool:
+
+```bash
+bash scripts/build_targeted_splits.sh
+```
+
+This writes `adapt_targeted_10/25/50/100.json` by selecting the empirically lowest-success groups in `adapt_pool.json`. The selector rejects any evaluation record outside the adaptation pool, preventing held-out/test leakage.
 
 **Do not randomly split frames.** A perturbation trajectory/group belongs to one core split only.
 
@@ -264,7 +272,7 @@ Available baselines:
 - `expert-ft`: action expert + state projection
 - `lora`: official LeRobot PEFT path
 
-Random vs targeted augmentation are represented by using the corresponding split file with the same training recipe and budget.
+Random, official-difficulty and empirical failure-targeted augmentation are represented by using the corresponding split file with the **same training recipe and pose-group budget**. A budget of 25 means 25 RobotInit perturbation groups/tasks, not necessarily 25 individual frames or demonstrations; exact selected episode IDs are recorded by the trainer.
 
 ---
 
@@ -335,7 +343,17 @@ startshift apply-failures   --records outputs/eval/m0/robotinit/eval_records.jso
 
 ## 15. Reports
 
-After multiple methods are evaluated:
+After multiple methods are evaluated, aggregate seeds first:
+
+```bash
+startshift aggregate \
+  --results-root outputs/eval/matrix \
+  --output-dir reports/aggregate \
+  --baseline-method targeted-lora \
+  --method rise-ea
+```
+
+Then build the figures/report:
 
 ```bash
 startshift report   --results-root outputs/eval   --output-dir reports/latest
@@ -363,6 +381,12 @@ Use `--fail-on-reject` in automated experiment jobs if desired.
 ---
 
 ## 17. Full experiment plan
+
+Before generating the full matrix, create empirical targeted splits:
+
+```bash
+bash scripts/build_targeted_splits.sh
+```
 
 Generate the full seed × budget training plan:
 
