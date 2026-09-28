@@ -1,0 +1,14 @@
+# Revisions verified when the project was initialized.
+# Bootstrap scripts clone these exact revisions unless explicitly overridden.
+lerobot:
+  url: https://github.com/huggingface/lerobot.git
+  commit: e595b7902714ba51f91e47523f66f89c5181b649
+
+libero_plus:
+  url: https://github.com/sylvestf/LIBERO-plus.git
+  commit: 4976dc30028e805ff8094b55501d532c48fec182
+
+python: "3.11"
+notes:
+  - "Do not silently follow upstream HEAD for formal experiments."
+  - "Record CUDA, PyTorch, driver, GPU and dataset revisions in every run."
