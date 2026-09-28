@@ -6,6 +6,7 @@ def test_cli_has_full_pipeline_commands():
     for command in [
         "manifest",
         "make-splits",
+        "make-targeted",
         "train",
         "baseline",
         "eval",
@@ -15,6 +16,7 @@ def test_cli_has_full_pipeline_commands():
         "apply-failures",
         "audit",
         "gate",
+        "aggregate",
         "report",
         "state-coverage",
     ]:
