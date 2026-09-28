@@ -20,7 +20,7 @@ jobs:
       - name: Install
         run: python -m pip install -e ".[dev]"
       - name: Ruff
-        run: ruff check startshift tests scripts/run_full_matrix.py
+        run: ruff check startshift tests scripts/run_full_matrix.py scripts/run_eval_matrix.py scripts/verify_environment.py
       - name: Compile
         run: python -m compileall -q startshift tests scripts
       - name: Tests
