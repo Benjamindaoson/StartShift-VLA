@@ -29,7 +29,14 @@ def lerobot_train_args(
     steps: int,
     batch_size: int,
     lr: float,
+    seed: int = 42,
 ) -> list[str]:
+    """Build baseline commands for the pinned LeRobot revision.
+
+    SmolVLA defaults to train_expert_only=True. The flags below make baseline
+    semantics explicit so "standard-ft" and "expert-ft" cannot silently become
+    the same experiment.
+    """
     args = [
         "lerobot-train",
         f"--policy.path={base_policy}",
@@ -39,13 +46,27 @@ def lerobot_train_args(
         f"--steps={steps}",
         f"--batch_size={batch_size}",
         f"--policy.optimizer_lr={lr}",
+        f"--seed={seed}",
         "--policy.output_features=null",
         "--policy.input_features=null",
     ]
     if method == "lora":
-        args += ["--peft.method_type=LORA", "--peft.r=64", "--peft.lora_alpha=64"]
-    elif method in {"standard-ft", "expert-ft"}:
-        pass
+        args += [
+            "--peft.method_type=LORA",
+            "--peft.r=64",
+            "--peft.lora_alpha=64",
+        ]
+    elif method == "expert-ft":
+        args += [
+            "--policy.train_expert_only=true",
+            "--policy.train_state_proj=true",
+        ]
+    elif method == "standard-ft":
+        args += [
+            "--policy.train_expert_only=false",
+            "--policy.freeze_vision_encoder=true",
+            "--policy.train_state_proj=true",
+        ]
     else:
         raise ValueError(f"Unsupported baseline method: {method}")
     return args
@@ -62,6 +83,7 @@ def run_baseline(
     batch_size: int,
     lr: float,
     limit_per_task: int | None = None,
+    seed: int = 42,
     execute: bool = True,
 ) -> list[str]:
     episodes = resolve_episode_subset(
@@ -76,6 +98,7 @@ def run_baseline(
         steps=steps,
         batch_size=batch_size,
         lr=lr,
+        seed=seed,
     )
     if execute:
         subprocess.run(args, check=True)
