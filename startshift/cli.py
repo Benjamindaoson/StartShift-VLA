@@ -27,7 +27,14 @@ def _cmd_splits(args):
 def _cmd_train(args):
     from startshift.training.train import train_rise
 
-    train_rise(args.config, split=args.split, method=args.method, limit_per_task=args.limit_per_task)
+    train_rise(
+        args.config,
+        split=args.split,
+        method=args.method,
+        limit_per_task=args.limit_per_task,
+        output_dir=args.output_dir,
+        seed=args.seed,
+    )
 
 
 def _cmd_baseline(args):
@@ -62,10 +69,13 @@ def _cmd_eval(args):
         seed=args.seed,
         device=args.device,
         method_name=args.method_name,
+        init_states=not args.canonical_reset,
+        record_trajectories=args.record_trajectories,
         metadata={
             "adaptation_budget": args.adaptation_budget,
             "trainable_parameters": args.trainable_parameters,
             "gpu_hours": args.gpu_hours,
+            "canonical_reset": args.canonical_reset,
         },
     )
 
@@ -110,6 +120,20 @@ def _cmd_report(args):
     print(path)
 
 
+def _cmd_external_eval(args):
+    from startshift.evaluation.external import official_eval_args, run_official_eval
+
+    commands = official_eval_args(
+        policy_path=args.policy,
+        split_path=args.split,
+        output_dir=args.output_dir,
+        episodes=args.episodes,
+        batch_size=args.batch_size,
+    )
+    for command in run_official_eval(commands, execute=args.execute):
+        print(command)
+
+
 def _cmd_state_coverage(args):
     from lerobot.datasets import LeRobotDataset
 
@@ -140,6 +164,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--split", required=True)
     p.add_argument("--method", choices=["rise-e", "rise-ea", "rise-ear"])
     p.add_argument("--limit-per-task", type=int)
+    p.add_argument("--output-dir")
+    p.add_argument("--seed", type=int)
     p.set_defaults(func=_cmd_train)
 
     p = sub.add_parser("baseline", help="Run or print an official LeRobot baseline command")
@@ -165,6 +191,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--adaptation-budget", type=int, default=0)
     p.add_argument("--trainable-parameters", type=int, default=0)
     p.add_argument("--gpu-hours", type=float)
+    p.add_argument("--canonical-reset", action="store_true")
+    p.add_argument("--record-trajectories", action="store_true")
     p.set_defaults(func=_cmd_eval)
 
     p = sub.add_parser("eval-id", help="Evaluate the same policy on vanilla LIBERO")
@@ -177,6 +205,15 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--device", default="cuda")
     p.add_argument("--method-name")
     p.set_defaults(func=_cmd_eval_id)
+
+    p = sub.add_parser("external-eval", help="Use official lerobot-eval for LoRA or another backbone")
+    p.add_argument("--policy", required=True)
+    p.add_argument("--split", required=True)
+    p.add_argument("--output-dir", required=True)
+    p.add_argument("--episodes", type=int, default=10)
+    p.add_argument("--batch-size", type=int, default=1)
+    p.add_argument("--execute", action="store_true")
+    p.set_defaults(func=_cmd_external_eval)
 
     p = sub.add_parser("failure-template", help="Create a manual failure annotation CSV")
     p.add_argument("--records", required=True)

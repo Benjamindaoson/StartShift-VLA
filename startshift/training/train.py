@@ -54,9 +54,15 @@ def train_rise(
     split: str | Path,
     method: str | None = None,
     limit_per_task: int | None = None,
+    output_dir: str | Path | None = None,
+    seed: int | None = None,
 ) -> Path:
     cfg = load_config(config) if not isinstance(config, ExperimentConfig) else config
     method = method or cfg.policy.method
+    if seed is not None:
+        cfg.train.seed = seed
+    if output_dir is not None:
+        cfg.train.output_dir = str(output_dir)
     seed_everything(cfg.train.seed)
     device = torch.device(cfg.train.device if torch.cuda.is_available() else "cpu")
     policy = _make_policy(cfg.policy.base_policy, method, cfg.policy)
@@ -162,6 +168,13 @@ def train_rise(
                 extra={"step": step, "split": str(split)},
             )
 
+    save_rise_checkpoint(
+        out / "last",
+        policy,
+        base_policy=cfg.policy.base_policy,
+        method=method,
+        extra={"step": cfg.train.steps, "split": str(split), "final": True},
+    )
     write_json(
         {"elapsed_s": time.perf_counter() - started, "final_step": cfg.train.steps, "method": method},
         out / "done.json",
