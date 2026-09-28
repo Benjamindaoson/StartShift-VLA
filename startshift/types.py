@@ -32,7 +32,7 @@ class PoseRecord:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, value: dict[str, Any]) -> "PoseRecord":
+    def from_dict(cls, value: dict[str, Any]) -> PoseRecord:
         known = {k: value.get(k) for k in ("suite", "task_id", "category", "difficulty", "base_task", "pose_id")}
         known["task_id"] = int(known["task_id"])
         known["metadata"] = value.get("metadata")
@@ -62,5 +62,5 @@ class EvalRecord:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, value: dict[str, Any]) -> "EvalRecord":
+    def from_dict(cls, value: dict[str, Any]) -> EvalRecord:
         return cls(**value)
