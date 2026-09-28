@@ -63,7 +63,7 @@ class ExperimentConfig:
     eval: EvalConfig = field(default_factory=EvalConfig)
 
     @classmethod
-    def from_dict(cls, value: dict[str, Any]) -> "ExperimentConfig":
+    def from_dict(cls, value: dict[str, Any]) -> ExperimentConfig:
         return cls(
             name=value.get("name", "startshift"),
             data=DataConfig(**value.get("data", {})),
