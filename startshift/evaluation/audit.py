@@ -18,6 +18,12 @@ def audit(
     output_path: str | Path,
     id_records: str | Path | None = None,
 ) -> dict:
+    """Build the M0 audit report.
+
+    The clean-vs-shift difference is a distribution-shift gap, not an
+    "ID regression": ID regression is only meaningful when comparing two
+    different policies on the same clean distribution.
+    """
     shifted = load_eval_records(robotinit_records)
     report = {"robotinit": summarize_records(shifted)}
     if id_records is not None:
@@ -26,8 +32,8 @@ def audit(
         report["robustness_retention"] = robustness_retention(
             report["robotinit"]["success_rate"], report["id"]["success_rate"]
         )
-        report["id_regression_pp"] = (
-            report["robotinit"]["success_rate"] - report["id"]["success_rate"]
+        report["distribution_shift_gap_pp"] = (
+            report["id"]["success_rate"] - report["robotinit"]["success_rate"]
         ) * 100.0
 
     failure_counts = Counter(r.failure_type or "UNLABELED" for r in shifted if not r.success)
