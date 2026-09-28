@@ -177,21 +177,38 @@ configs/
 
 Formal experiments are Linux-only because LIBERO/LIBERO-Plus require MuJoCo.
 
+The pinned LeRobot revision requires **Python >= 3.12**. StartShift does **not** require you to replace your system Python: `scripts/bootstrap.sh` creates a project-local `.venv` with Python 3.12 automatically. If `python3.12` is unavailable but Conda is installed (for example on AutoDL), the script creates the environment with Conda under the same `.venv` path.
+
 ```bash
 git clone https://github.com/Benjamindaoson/StartShift-VLA.git
 cd StartShift-VLA
 
 bash scripts/bootstrap.sh
 source scripts/env.sh
+
+python --version
+# expected: Python 3.12.x
+
+python scripts/verify_environment.py
 bash scripts/download_libero_plus_assets.sh
 ```
 
-The bootstrap script pins the exact LeRobot and LIBERO-Plus commits in `third_party.lock`.
+The bootstrap script pins the exact LeRobot and LIBERO-Plus commits in `third_party.lock` and installs all robotics dependencies into the project environment.
+
+If you previously ran bootstrap from Python 3.10/3.11 and it failed, simply update the repository and rerun it:
+
+```bash
+git pull
+bash scripts/bootstrap.sh
+source scripts/env.sh
+python scripts/verify_environment.py
+```
+
+Do not install LeRobot into the system/base Python.
 
 Before spending GPU time:
 
 ```bash
-python scripts/verify_environment.py
 pytest
 ruff check startshift tests
 ```
