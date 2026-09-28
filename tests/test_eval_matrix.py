@@ -2,7 +2,7 @@ from pathlib import Path
 
 import yaml
 
-from scripts.run_eval_matrix import build_plan
+from startshift.evaluation.matrix import build_plan
 
 
 def test_eval_matrix_builds_heldout_and_id_commands(tmp_path: Path):
