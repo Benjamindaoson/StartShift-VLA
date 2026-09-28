@@ -113,7 +113,7 @@ def patch_smolvla_state_projector(
 def freeze_all_except_rise(policy: nn.Module) -> list[nn.Parameter]:
     for parameter in policy.parameters():
         parameter.requires_grad = False
-    projector = getattr(getattr(policy, "model"), "state_proj")
+    projector = policy.model.state_proj
     if not isinstance(projector, RISEStateProjector):
         raise TypeError("Policy is not patched with RISEStateProjector.")
     for parameter in projector.context.parameters():
