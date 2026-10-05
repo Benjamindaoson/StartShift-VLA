@@ -85,7 +85,7 @@ def _get_first(value: dict[str, Any], keys: Iterable[str]) -> Any:
 def _record_from_mapping(value: dict[str, Any], suite_hint: str | None = None) -> PoseRecord:
     task_id = _get_first(value, ("task_id", "taskid", "id", "index"))
     category = _get_first(value, ("category", "perturbation", "type", "dimension"))
-    difficulty = _get_first(value, ("difficulty", "level", "severity"))
+    difficulty = _get_first(value, ("difficulty", "difficulty_level", "level", "severity"))
     suite = _get_first(value, ("suite", "benchmark", "task_suite")) or suite_hint or "unknown"
     base_task = _get_first(value, ("base_task", "base_task_id", "original_task", "task_name"))
     pose_id = _get_first(value, ("pose_id", "variant_id", "reset_id"))

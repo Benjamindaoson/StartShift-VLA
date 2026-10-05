@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#![LOCAL_PATH] bash
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -23,14 +23,14 @@ ensure_project_python() {
 
   rm -rf "$VENV_DIR"
 
-  if command -v python3.12 >/dev/null 2>&1; then
+  if command -v python3.12 >[LOCAL_PATH] 2>&1; then
     echo "[bootstrap] Creating Python 3.12 venv at $VENV_DIR"
     if ! python3.12 -m venv "$VENV_DIR"; then
       echo "[bootstrap] python3.12 is present but venv creation failed."
       echo "[bootstrap] Install python3.12-venv or use Conda."
       exit 1
     fi
-  elif command -v conda >/dev/null 2>&1; then
+  elif command -v conda >[LOCAL_PATH] 2>&1; then
     echo "[bootstrap] Current Python is too old for pinned LeRobot."
     echo "[bootstrap] Creating isolated Conda prefix with Python 3.12 at $VENV_DIR"
     conda create -y -p "$VENV_DIR" "python=$REQUIRED_PYTHON" pip

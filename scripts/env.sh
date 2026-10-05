@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#![LOCAL_PATH] bash
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 VENV_DIR="${STARTSHIFT_VENV_DIR:-$ROOT/.venv}"
@@ -18,3 +18,4 @@ fi
 
 export PYTHONPATH="$ROOT/third_party/LIBERO-plus:${PYTHONPATH:-}"
 export MUJOCO_GL="${MUJOCO_GL:-egl}"
+export LIBERO_CONFIG_PATH="${LIBERO_CONFIG_PATH:-$ROOT/.libero}"

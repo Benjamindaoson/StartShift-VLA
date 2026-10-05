@@ -1,0 +1,17 @@
+{
+  "scope": "Core GitHub publication; current Git candidate tree, no private runtime folders",
+  "privacy_or_link_findings": [],
+  "retained_imported_artifacts": 95,
+  "principal_records": 920,
+  "principal_record_bytes_unchanged": true,
+  "scientific_source_unchanged_from_verified_archive": true,
+  "local_checks": {
+    "offline_verifier": "PASS",
+    "archive_tests": "6 passed",
+    "ruff": "PASS",
+    "compileall": "PASS",
+    "cli_help": "PASS",
+    "full_robotics_integration": "Not claimed; see docs/verification.md for the preserved missing-dependency failure"
+  },
+  "publication": "Normal commit on existing public main history; no force push"
+}

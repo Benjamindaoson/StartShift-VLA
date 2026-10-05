@@ -1,0 +1,49 @@
+{
+  "core_split_sizes": {
+    "adapt_pool": 465,
+    "audit": 310,
+    "dev": 310,
+    "heldout_test": 465
+  },
+  "descriptive_gap_pp": 67.16666666666666,
+  "exported_files_verified": 95,
+  "id": {
+    "cvar20_pose_success": 0.4666666666666666,
+    "episode_wilson95_descriptive": [
+      0.6302979754694596,
+      0.7895937190824355
+    ],
+    "episodes": 120,
+    "failures": 34,
+    "groups": 12,
+    "missing_initial_states": 120,
+    "missing_video_references": 120,
+    "success_rate": 0.7166666666666667,
+    "successes": 86,
+    "unlabeled_failures": 34,
+    "worst_pose_success": 0.3,
+    "zero_success_groups": 0
+  },
+  "method_effect": null,
+  "reset_only_causal_effect": null,
+  "robotinit": {
+    "cvar20_pose_success": 0.0,
+    "episode_wilson95_descriptive": [
+      0.032679556110122895,
+      0.0616692212370423
+    ],
+    "episodes": 800,
+    "failures": 764,
+    "groups": 80,
+    "missing_initial_states": 800,
+    "missing_video_references": 800,
+    "success_rate": 0.045,
+    "successes": 36,
+    "unlabeled_failures": 764,
+    "worst_pose_success": 0.0,
+    "zero_success_groups": 65
+  },
+  "split_identity_scope": "Suite-qualified labels only; physical reset disjointness unverified.",
+  "status": "VERIFIED_SAVED_RECORDS_ONLY",
+  "training_status": "NOT_STARTED_IN_RECORDED_G2_ATTEMPT"
+}

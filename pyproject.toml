@@ -1,14 +1,15 @@
 [build-system]
-requires = ["setuptools>=75", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "startshift-vla"
 version = "0.1.0"
-description = "Diagnosing and mitigating hidden reset-state dependence in vision-language-action policies."
+description = "Archived research prototype diagnosing initialization sensitivity in vision-language-action policies."
 readme = "README.md"
 requires-python = ">=3.12"
-license = {text = "MIT"}
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [{name = "Benjamin Daoson"}]
 dependencies = [
   "numpy>=1.26",

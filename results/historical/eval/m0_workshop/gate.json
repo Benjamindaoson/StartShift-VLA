@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "distribution_shift_gap": true
+  },
+  "notes": [
+    "G1 asks whether RobotInit is a strong enough failure mode to justify method development.",
+    "If this gate fails, stop or change the backbone/problem instead of forcing a method."
+  ],
+  "passed": true,
+  "thresholds": {
+    "max_id_drop_pp": 2.0,
+    "min_heldout_gain_pp": 3.0,
+    "min_tail_gain_pp": 3.0,
+    "phenomenon_gap_pp": 15.0
+  },
+  "values": {
+    "distribution_shift_gap_pp": 67.16666666666666
+  }
+}

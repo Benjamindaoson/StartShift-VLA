@@ -11,22 +11,6 @@ from startshift.types import PoseRecord
 from startshift.utils.io import read_json, write_json
 
 
-def _round_robin_stratified(records: list[PoseRecord], seed: int) -> list[PoseRecord]:
-    rng = random.Random(seed)
-    groups: dict[str, list[PoseRecord]] = defaultdict(list)
-    for record in records:
-        groups[record.stratum].append(record)
-    for group in groups.values():
-        rng.shuffle(group)
-
-    ordered: list[PoseRecord] = []
-    while any(groups.values()):
-        for key in sorted(groups):
-            if groups[key]:
-                ordered.append(groups[key].pop())
-    return ordered
-
-
 def _difficulty_rank(value) -> float:
     if value is None:
         return 0.0
@@ -39,7 +23,7 @@ def _difficulty_rank(value) -> float:
 def validate_disjoint_splits(splits: dict[str, list[PoseRecord]]) -> None:
     seen: dict[str, str] = {}
     for split_name, records in splits.items():
-        if split_name.startswith("adapt_"):
+        if split_name.startswith("adapt_") and split_name != "adapt_pool":
             continue
         for record in records:
             group = record.group_id
@@ -62,20 +46,30 @@ def build_pose_splits(
     if len(values) < 5:
         raise ValueError("Need at least five RobotInit records to create meaningful splits.")
 
-    ordered = _round_robin_stratified(values, seed)
-    n = len(ordered)
-    n_audit = max(1, round(n * audit_fraction))
-    n_dev = max(1, round(n * dev_fraction))
-    n_adapt = max(1, round(n * adapt_pool_fraction))
+    rng = random.Random(seed)
+    groups: dict[str, list[PoseRecord]] = defaultdict(list)
+    for record in values:
+        groups[record.stratum].append(record)
 
-    if n_audit + n_dev + n_adapt >= n:
-        overflow = n_audit + n_dev + n_adapt - (n - 1)
-        n_adapt = max(1, n_adapt - overflow)
-
-    audit = ordered[:n_audit]
-    adapt_pool = ordered[n_audit : n_audit + n_adapt]
-    dev = ordered[n_audit + n_adapt : n_audit + n_adapt + n_dev]
-    heldout = ordered[n_audit + n_adapt + n_dev :]
+    audit: list[PoseRecord] = []
+    adapt_pool: list[PoseRecord] = []
+    dev: list[PoseRecord] = []
+    heldout: list[PoseRecord] = []
+    for key in sorted(groups):
+        group = groups[key]
+        rng.shuffle(group)
+        n_audit = round(len(group) * audit_fraction)
+        n_adapt = round(len(group) * adapt_pool_fraction)
+        n_dev = round(len(group) * dev_fraction)
+        adapt_start = n_audit
+        dev_start = adapt_start + n_adapt
+        heldout_start = dev_start + n_dev
+        audit.extend(group[:adapt_start])
+        adapt_pool.extend(group[adapt_start:dev_start])
+        dev.extend(group[dev_start:heldout_start])
+        heldout.extend(group[heldout_start:])
+    for split in (audit, adapt_pool, dev, heldout):
+        rng.shuffle(split)
     if not heldout:
         raise ValueError("Held-out split is empty. Reduce audit/dev/adapt fractions.")
 

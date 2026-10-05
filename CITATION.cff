@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Software citation placeholder for an archived research prototype. Cite the exact archive commit; no paper or DOI is claimed."
+title: "StartShift-VLA: Diagnosing Hidden Reset-State Dependence in Vision-Language-Action Policies"
+type: software
+repository-code: "https://github.com/Benjamindaoson/StartShift-VLA"
+authors:
+  - family-names: Daoson
+    given-names: Benjamin
+version: "0.1.0"
+date-released: "2026-10-05"
+license: MIT
+abstract: "Archived research prototype documenting a descriptive initialization-sensitivity observation. RISE variants remain unvalidated."

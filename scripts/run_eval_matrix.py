@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#![LOCAL_PATH] python
 from __future__ import annotations
 
 import argparse

@@ -1,0 +1,19 @@
+{
+  "status": "historical_observations_not_a_new_run_config",
+  "policy": "lerobot/smolvla_libero",
+  "policy_revision": "31d453f7edd78c839a8bbc39744a292686daf0de",
+  "dataset_metadata_revision": "f3f49f426d75030177b18778374005bc12ccd588",
+  "dataset_metadata_counts": {"episodes": 14347, "frames": 2238036, "base_tasks": 40},
+  "base_seed": 42,
+  "seed_rule": "base_seed + record_index * 10000 + episode_index",
+  "episodes_per_group": 10,
+  "hard_reset": true,
+  "benchmark_init_states": true,
+  "id": {"suites": ["libero_spatial", "libero_object", "libero_goal", "libero_10"], "task_ids_per_suite": [0, 1, 2], "groups": 12, "episodes": 120, "records": "results/baseline/id/eval_records.jsonl"},
+  "robotinit": {"split": "splits/audit_workshop_80.json", "groups": 80, "episodes": 800, "records": "results/baseline/robotinit/eval_records.jsonl"},
+  "training_started_in_g2_attempt": false,
+  "paired_reset_only_effect_identified": false,
+  "rise_effect": null,
+  "independent_seed_replication_completed": false,
+  "source_environment": {"python": "3.12.14", "torch": "2.11.0+cu130", "cuda_runtime": "13.0", "gpu_class": "NVIDIA GeForce RTX 4090 D", "platform_class": "Linux x86_64"}
+}

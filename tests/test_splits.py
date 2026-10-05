@@ -1,4 +1,10 @@
-from startshift.data.splits import build_failure_targeted_split, build_pose_splits
+import pytest
+
+from startshift.data.splits import (
+    build_failure_targeted_split,
+    build_pose_splits,
+    validate_disjoint_splits,
+)
 from startshift.types import PoseRecord
 
 
@@ -25,6 +31,26 @@ def test_pose_splits_are_reproducible_and_disjoint():
     for i, left in enumerate(core):
         for right in core[i + 1 :]:
             assert sets[left].isdisjoint(sets[right])
+
+
+def test_core_splits_preserve_uneven_strata():
+    records = [
+        PoseRecord("rare", i, "robot", "L1", pose_id=f"rare-{i}") for i in range(5)
+    ] + [
+        PoseRecord("common", i, "robot", "L2", pose_id=f"common-{i}") for i in range(15)
+    ]
+    splits = build_pose_splits(records, seed=7)
+    expected = {records[0].stratum, records[-1].stratum}
+    for name in ("audit", "adapt_pool", "dev", "heldout_test"):
+        assert {record.stratum for record in splits[name]} == expected
+
+
+def test_disjoint_validator_checks_adaptation_pool():
+    leaked = PoseRecord("s", 1, "robot", "L1", pose_id="shared")
+    with pytest.raises(ValueError, match="leaked"):
+        validate_disjoint_splits(
+            {"audit": [leaked], "adapt_pool": [leaked], "dev": [], "heldout_test": []}
+        )
 
 
 def test_adaptation_budgets_are_nested_and_difficulty_split_is_hard_first():

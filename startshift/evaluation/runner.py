@@ -67,6 +67,11 @@ def evaluate_records(
     from lerobot.policies import make_pre_post_processors
     from lerobot.scripts.lerobot_eval import rollout
 
+    if env_type == "libero":
+        from startshift.evaluation.libero_id import install_vanilla_libero_benchmarks
+
+        install_vanilla_libero_benchmarks()
+
     if not torch.cuda.is_available() and device.startswith("cuda"):
         device = "cpu"
     seed_everything(seed)

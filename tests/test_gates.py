@@ -20,6 +20,16 @@ def test_phenomenon_gate():
     assert result.values["distribution_shift_gap_pp"] == pytest.approx(25.0)
 
 
+def test_phenomenon_gate_rejects_gap_below_fifteen_percentage_points():
+    result = evaluate_phenomenon_gate(
+        id_summary=_summary(0.80),
+        robotinit_summary=_summary(0.785),
+        thresholds=GateThresholds(phenomenon_gap_pp=15),
+    )
+    assert not result.passed
+    assert result.values["distribution_shift_gap_pp"] == pytest.approx(1.5)
+
+
 def test_method_gate_requires_gain_id_preservation_and_tail():
     result = evaluate_method_gate(
         baseline_heldout=_summary(0.55, 0.20),

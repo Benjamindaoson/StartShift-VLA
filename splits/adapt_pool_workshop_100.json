@@ -1,0 +1,1402 @@
+[
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 450,
+      "name": "pick_up_the_tomato_sauce_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_136"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 450
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 652,
+      "name": "put_the_wine_bottle_on_the_rack_view_0_0_100_0_0_initstate_10"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 652
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 575,
+      "name": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_140"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 575
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 530,
+      "name": "push_the_plate_to_the_front_of_the_stove_view_0_0_100_0_0_initstate_496"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 530
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 464,
+      "name": "put_the_bowl_on_top_of_the_cabinet_view_0_0_100_0_0_initstate_235"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 464
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 408,
+      "name": "pick_up_the_ketchup_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_45"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 408
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 631,
+      "name": "pick_up_the_orange_juice_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_340"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 631
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 619,
+      "name": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_view_0_0_100_0_0_initstate_279"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 619
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 593,
+      "name": "turn_on_the_stove_view_0_0_100_0_0_initstate_268"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 593
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 578,
+      "name": "turn_on_the_stove_view_0_0_100_0_0_initstate_8"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 578
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 371,
+      "name": "pick_up_the_bbq_sauce_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_74"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 371
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 324,
+      "name": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_452"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 324
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 561,
+      "name": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_429"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 561
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 384,
+      "name": "put_the_wine_bottle_on_top_of_the_cabinet_view_0_0_100_0_0_initstate_243"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 384
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 511,
+      "name": "push_the_plate_to_the_front_of_the_stove_view_0_0_100_0_0_initstate_296"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 511
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 526,
+      "name": "pick_up_the_milk_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_78"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 526
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 446,
+      "name": "pick_up_the_tomato_sauce_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_6"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 446
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 465,
+      "name": "pick_up_the_tomato_sauce_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_296"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 465
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 324,
+      "name": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_view_0_0_100_0_0_initstate_421"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 324
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 588,
+      "name": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_389"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 588
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 523,
+      "name": "push_the_plate_to_the_front_of_the_stove_view_0_0_100_0_0_initstate_426"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 523
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 640,
+      "name": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_view_0_0_100_0_0_initstate_499"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 640
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 437,
+      "name": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_236"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 437
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 446,
+      "name": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_view_0_0_100_0_0_initstate_414"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 446
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 618,
+      "name": "pick_up_the_orange_juice_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_210"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 618
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 485,
+      "name": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_view_0_0_100_0_0_initstate_415"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 485
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 317,
+      "name": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_372"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 317
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 554,
+      "name": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_view_0_0_100_0_0_initstate_367"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 554
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 527,
+      "name": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_view_0_0_100_0_0_initstate_17"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 527
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 445,
+      "name": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_view_0_0_100_0_0_initstate_404"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 445
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 258,
+      "name": "pick_up_the_alphabet_soup_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_171"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 258
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 534,
+      "name": "put_the_cream_cheese_in_the_bowl_view_0_0_100_0_0_initstate_47"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 534
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 640,
+      "name": "pick_up_the_orange_juice_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_430"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 640
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 545,
+      "name": "put_the_cream_cheese_in_the_bowl_view_0_0_100_0_0_initstate_157"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 545
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 454,
+      "name": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_446"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 454
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 554,
+      "name": "pick_up_the_milk_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_388"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 554
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 399,
+      "name": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_195"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 399
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 338,
+      "name": "pick_up_the_salad_dressing_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_133"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 338
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 358,
+      "name": "pick_up_the_salad_dressing_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_363"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 358
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 471,
+      "name": "put_the_bowl_on_top_of_the_cabinet_view_0_0_100_0_0_initstate_305"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 471
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 414,
+      "name": "pick_up_the_ketchup_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_155"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 414
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 491,
+      "name": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_view_0_0_100_0_0_initstate_495"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 491
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 625,
+      "name": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_view_0_0_100_0_0_initstate_339"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 625
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 338,
+      "name": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_183"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 338
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 259,
+      "name": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_1"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 259
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 439,
+      "name": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_266"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 439
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 290,
+      "name": "open_the_middle_drawer_of_the_cabinet_view_0_0_100_0_0_initstate_141"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 290
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 284,
+      "name": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_421"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 284
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 641,
+      "name": "pick_up_the_orange_juice_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_440"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 641
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 456,
+      "name": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_view_0_0_100_0_0_initstate_95"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 456
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 397,
+      "name": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_175"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 397
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 522,
+      "name": "push_the_plate_to_the_front_of_the_stove_view_0_0_100_0_0_initstate_416"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 522
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 410,
+      "name": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_view_0_0_100_0_0_initstate_4"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 410
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 482,
+      "name": "put_the_bowl_on_top_of_the_cabinet_view_0_0_100_0_0_initstate_415"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 482
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 565,
+      "name": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate_view_0_0_100_0_0_initstate_477"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 565
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 313,
+      "name": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_332"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 313
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 267,
+      "name": "pick_up_the_alphabet_soup_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_261"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 267
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 602,
+      "name": "pick_up_the_orange_juice_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_50"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 602
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 376,
+      "name": "pick_up_the_bbq_sauce_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_164"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 376
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 632,
+      "name": "put_the_bowl_on_the_plate_view_0_0_100_0_0_initstate_269"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 632
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 291,
+      "name": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket_view_0_0_100_0_0_initstate_11"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 291
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 361,
+      "name": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_view_0_0_100_0_0_initstate_452"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 361
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 361,
+      "name": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_473"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 361
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 495,
+      "name": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy_view_0_0_100_0_0_initstate_136"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 495
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 549,
+      "name": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_299"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 549
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 431,
+      "name": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it_view_0_0_100_0_0_initstate_264"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 431
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 389,
+      "name": "put_the_wine_bottle_on_top_of_the_cabinet_view_0_0_100_0_0_initstate_323"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 389
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 309,
+      "name": "open_the_middle_drawer_of_the_cabinet_view_0_0_100_0_0_initstate_341"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 309
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 599,
+      "name": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_410"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 599
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 400,
+      "name": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_view_0_0_100_0_0_initstate_383"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 400
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 474,
+      "name": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_347"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 474
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 601,
+      "name": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_430"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 601
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 348,
+      "name": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_313"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 348
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 633,
+      "name": "put_the_bowl_on_the_plate_view_0_0_100_0_0_initstate_279"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 633
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 344,
+      "name": "put_the_bowl_on_the_stove_view_0_0_100_0_0_initstate_312"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 344
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 365,
+      "name": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_view_0_0_100_0_0_initstate_492"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 365
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 479,
+      "name": "put_the_bowl_on_top_of_the_cabinet_view_0_0_100_0_0_initstate_385"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 479
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 434,
+      "name": "open_the_top_drawer_and_put_the_bowl_inside_view_0_0_100_0_0_initstate_354"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 434
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 394,
+      "name": "pick_up_the_bbq_sauce_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_364"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 394
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 489,
+      "name": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_78"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 489
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 475,
+      "name": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_357"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 475
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 2,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 2,
+      "id": 466,
+      "name": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_177"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 466
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 453,
+      "name": "put_the_bowl_on_top_of_the_cabinet_view_0_0_100_0_0_initstate_115"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 453
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 516,
+      "name": "pick_up_the_butter_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_407"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 516
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 678,
+      "name": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it_view_0_0_100_0_0_initstate_460"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 678
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 681,
+      "name": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it_view_0_0_100_0_0_initstate_490"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 681
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 368,
+      "name": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it_view_0_0_100_0_0_initstate_23"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 368
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 282,
+      "name": "pick_up_the_alphabet_soup_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_411"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 282
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 419,
+      "name": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_405"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 419
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 303,
+      "name": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_232"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 303
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 339,
+      "name": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket_view_0_0_100_0_0_initstate_192"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 339
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 374,
+      "name": "put_the_wine_bottle_on_top_of_the_cabinet_view_0_0_100_0_0_initstate_143"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 374
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 410,
+      "name": "open_the_top_drawer_and_put_the_bowl_inside_view_0_0_100_0_0_initstate_94"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 410
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 446,
+      "name": "open_the_top_drawer_and_put_the_bowl_inside_view_0_0_100_0_0_initstate_484"
+    },
+    "pose_id": null,
+    "suite": "libero_goal",
+    "task_id": 446
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 5,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 5,
+      "id": 484,
+      "name": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate_view_0_0_100_0_0_initstate_405"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 484
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 583,
+      "name": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket_view_0_0_100_0_0_initstate_248"
+    },
+    "pose_id": null,
+    "suite": "libero_10",
+    "task_id": 583
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 3,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 3,
+      "id": 403,
+      "name": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_view_0_0_100_0_0_initstate_235"
+    },
+    "pose_id": null,
+    "suite": "libero_spatial",
+    "task_id": 403
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 498,
+      "name": "pick_up_the_butter_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_217"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 498
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 4,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 4,
+      "id": 595,
+      "name": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_459"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 595
+  },
+  {
+    "base_task": null,
+    "category": "robot",
+    "difficulty": 1,
+    "metadata": {
+      "category": "Robot Initial States",
+      "difficulty_level": 1,
+      "id": 485,
+      "name": "pick_up_the_butter_and_place_it_in_the_basket_view_0_0_100_0_0_initstate_47"
+    },
+    "pose_id": null,
+    "suite": "libero_object",
+    "task_id": 485
+  }
+]

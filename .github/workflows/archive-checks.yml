@@ -1,0 +1,22 @@
+name: Archive checks (not robotics integration)
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  offline-evidence-and-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Create project environment
+        run: python -m venv .venv
+      - name: Install lightweight archive dependencies
+        run: .venv/bin/python -m pip install -r requirements-archive.txt -e ".[dev]"
+      - name: Verify saved evidence (offline)
+        run: .venv/bin/python scripts/verify_archive.py
+      - name: Archive verifier tests (explicit scope)
+        run: .venv/bin/python -m pytest tests/test_archive.py -ra
+      - name: Lint and compile
+        run: |
+          .venv/bin/python -m ruff check startshift tests scripts
+          .venv/bin/python -m compileall -q startshift tests scripts

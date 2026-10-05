@@ -1,0 +1,53 @@
+{
+  "cvar20_pose_success": 0.4666666666666666,
+  "difficulty_success": {
+    "None": 0.7166666666666667
+  },
+  "env_type": "libero",
+  "environment": {
+    "cuda_available": true,
+    "cuda_runtime": "13.0",
+    "cudnn": 91900,
+    "gpu_count": 1,
+    "gpus": [
+      "NVIDIA GeForce RTX 4090 D"
+    ],
+    "lerobot_git_sha": "e595b7902714ba51f91e47523f66f89c5181b649",
+    "libero_plus_git_sha": "4976dc30028e805ff8094b55501d532c48fec182",
+    "machine": "x86_64",
+    "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+    "project_git_sha": "1e7ab0648f46c5c2ac4ce23a998630bac5b38b90",
+    "python": "3.12.14 | packaged by Anaconda, Inc. | (main, Aug 27 2026, 14:46:43) [GCC 14.3.0]",
+    "torch": "2.11.0+cu130"
+  },
+  "hard_reset": true,
+  "init_states": true,
+  "metadata": {
+    "split": "id"
+  },
+  "method": "base",
+  "n_episodes": 120,
+  "policy_path": "lerobot/smolvla_libero@31d453f7edd78c839a8bbc39744a292686daf0de",
+  "pose_success": {
+    "libero_10:0": 0.3,
+    "libero_10:1": 0.5,
+    "libero_10:2": 0.8,
+    "libero_goal:0": 0.9,
+    "libero_goal:1": 1.0,
+    "libero_goal:2": 0.7,
+    "libero_object:0": 0.8,
+    "libero_object:1": 0.7,
+    "libero_object:2": 0.8,
+    "libero_spatial:0": 0.8,
+    "libero_spatial:1": 0.6,
+    "libero_spatial:2": 0.7
+  },
+  "pose_success_std": 0.17716909687891086,
+  "success_rate": 0.7166666666666667,
+  "successes": 86,
+  "wilson95": [
+    0.6302979754694596,
+    0.7895937190824355
+  ],
+  "worst_pose_success": 0.3
+}

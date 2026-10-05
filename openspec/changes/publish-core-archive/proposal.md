@@ -1,0 +1,3 @@
+# Publish the core research archive
+
+Publish the owner-approved archive to the existing public repository main branch with a normal fast-forward commit. Preserve upstream history and all core source, tests, baseline JSONL, evaluation group identity and the G2 blocker receipt. Exclude redundant progress logs, GPU telemetry, preflight retries, duplicate adaptation subsets and internal preparation artifacts. Keep original private backups. Update README and provenance to match the exact published tree. Verify hashes, archive tests, lint, imports, links, privacy and the GitHub result. No new research, training, simulator evaluation or data acquisition.
